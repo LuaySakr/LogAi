@@ -19,6 +19,19 @@ ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN npm run build
 
+FROM base AS dev
+WORKDIR /app
+
+ENV NODE_ENV development
+ENV NEXT_TELEMETRY_DISABLED 1
+
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+COPY . .
+
+CMD ["npm", "run", "dev"]
+
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app

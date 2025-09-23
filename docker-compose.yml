@@ -46,7 +46,9 @@ services:
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      target: dev
     ports:
       - "3000:3000"
     environment:
@@ -56,7 +58,7 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
-    command: npm run dev
+    command: sh -c "if [ ! -f node_modules/.bin/next ]; then npm ci; fi; npm run dev"
 
 volumes:
   postgres_data:

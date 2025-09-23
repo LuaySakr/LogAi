@@ -64,7 +64,7 @@ LogAi is an AI-powered log analysis SaaS. It ingests logs from apps, servers, or
 3. **Start the services**
    ```bash
    # Using Docker Compose (recommended)
-   docker-compose up -d
+   docker compose up -d
    
    # Or run individually:
    
@@ -89,6 +89,11 @@ LogAi is an AI-powered log analysis SaaS. It ingests logs from apps, servers, or
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8000
    - API Documentation: http://localhost:8000/docs
+
+### Frontend container tips
+- The frontend service now builds the `dev` stage from `frontend/Dockerfile`, which installs dependencies and runs `npm run dev` inside the container.
+- When you bind-mount the repository (`./frontend:/app`), the container bootstraps `node_modules` on first start; rebuild with `docker compose up frontend --build` if dependencies change.
+- If the container exits immediately, delete the local `frontend/node_modules` folder and restart so the install script can recreate it inside the volume.
 
 ## 📁 Project Structure
 
