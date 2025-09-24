@@ -1,0 +1,114 @@
+<mxfile host="65bd71144e">
+    <diagram id="2JkBx7wBfgx54F5W7X3g" name="Page-1">
+        <mxGraphModel dx="210" dy="419" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="system-architecture" name="System Architecture">
+        <mxGraphModel dx="3720" dy="2128" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="vpc" value="AWS VPC" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;strokeColor=#97A1A9;fillColor=#F5F7F9;labelPosition=left;verticalLabelPosition=top;align=left;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="220" width="1000" height="620" as="geometry"/>
+                </mxCell>
+                <mxCell id="c8" value="Web Dashboard&#xa;Next.js" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" parent="vpc" vertex="1">
+                    <mxGeometry x="80" y="50" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="c4" value="API Service&#xa;FastAPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" parent="vpc" vertex="1">
+                    <mxGeometry x="80" y="160" width="170" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="q1" value="SQS&#xa;Work Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" parent="vpc" vertex="1">
+                    <mxGeometry x="420" y="50" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="s1" value="S3&#xa;Raw Logs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00" parent="vpc" vertex="1">
+                    <mxGeometry x="430" y="380" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="s2" value="RDS Postgres&#xa;Metadata" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450" parent="vpc" vertex="1">
+                    <mxGeometry x="425" y="160" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="obs" value="Observability&#xa;Prom/Graf/OTel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6" parent="vpc" vertex="1">
+                    <mxGeometry x="430" y="270" width="150" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="c5" value="Workers&#xa;Parse/Chunk/Analyze" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" parent="vpc" vertex="1">
+                    <mxGeometry x="700" y="160" width="180" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="c6" value="AI Service&#xa;LLM + Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" parent="vpc" vertex="1">
+                    <mxGeometry x="700" y="270" width="180" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="c7" value="Notification Service&#xa;Slack/Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" parent="vpc" vertex="1">
+                    <mxGeometry x="700" y="50" width="180" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1" value="Log Sources&#xa;Apps/Servers/Containers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" parent="1" vertex="1">
+                    <mxGeometry x="20" y="360" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="c2" value="Edge &amp; Ingress&#xa;CloudFront + ALB + WAF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" parent="1" vertex="1">
+                    <mxGeometry x="10" y="170" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="slack" value="Slack&#xa;Incoming Webhooks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" parent="1" vertex="1">
+                    <mxGeometry x="1290" y="50" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ses" value="SES&#xa;Email" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" parent="1" vertex="1">
+                    <mxGeometry x="1290" y="220" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" value="HTTPS" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c1" target="c2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" value="→ API" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c2" target="c4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="API calls" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c8" target="c4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" value="presigned URL" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1" parent="1" source="c4" target="c1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" value="PUT" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c1" target="s1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" value="register-upload" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c4" target="s2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" value="enqueue" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c4" target="q1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e9" value="dequeue" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c5" target="q1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e10" value="read/write" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c5" target="s1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e11" value="read/write" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c5" target="s2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e12" value="summarize" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c5" target="c6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e13" value="alerts" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c5" target="c7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e14" value="webhook" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c7" target="slack" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e15" value="email" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c7" target="ses" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e16" value="metrics/logs" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1" parent="1" source="c4" target="obs" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e17" value="metrics/logs" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1" parent="1" source="c5" target="obs" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="c3" value="Auth0&#xa;OIDC/JWT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" parent="1" vertex="1">
+                    <mxGeometry x="320" y="-100" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="Auth" style="endArrow=block;html=1;rounded=0;strokeWidth=1" parent="1" source="c8" target="c3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
